@@ -2,9 +2,7 @@ package factory;
 
 import java.util.Date;
 
-/**
- * Created by y28yang on 6/14/2016.
- */
+
 public class SupplyPeriod implements Comparable<SupplyPeriod> {
 
     private Date startTime;

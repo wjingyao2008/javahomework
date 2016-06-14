@@ -1,8 +1,6 @@
 package factory;
 
-/**
- * Created by Administrator on 2016/6/14 0014.
- */
+
 public class SupplyIterator {
 
     private Supply supply;
@@ -16,8 +14,8 @@ public class SupplyIterator {
 
 
     public int getMaxProductCanMake(){
-        int requredMaterialNum=requiredMaterial.getRequireNumber();
-        return getCurrentPeriod().getMaterialNumber()/requredMaterialNum;
+        int requiredNum=requiredMaterial.getRequireNumber();
+        return getCurrentPeriod().getMaterialNumber()/requiredNum;
     }
 
     public SupplyPeriod getCurrentPeriod(){

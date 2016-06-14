@@ -1,8 +1,6 @@
 package factory;
 
-/**
- * Created by y28yang on 6/14/2016.
- */
+
 public class Material {
 
     private String name;

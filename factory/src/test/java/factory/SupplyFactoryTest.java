@@ -4,12 +4,8 @@ import junit.framework.TestCase;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 
-/**
- * Created by y28yang on 6/14/2016.
- */
+
 public class SupplyFactoryTest extends TestCase {
     SupplyFactory supplyFactory;
     DateFormat format = new SimpleDateFormat("yyyy–MM–dd HH:mm:ss");
@@ -67,30 +63,5 @@ public class SupplyFactoryTest extends TestCase {
 
     }
 
-//    public void testGetValidProductSupply2() throws Exception {
-//
-////        Supply raw_rose_005 = supplyFactory.getSupplyByName("RAW_ROSE_005");
-////        Supply capacitySup = supplyFactory.getSupplyByName("CAPACITY");
-////
-////        SupplyIterator iterator=new SupplyIterator(raw_rose_005,new Material("RAW_ROSE_005",14));
-////        SupplyIterator iterator2=new SupplyIterator(capacitySup,new Material("CAPACITY",1));
-////        List<SupplyIterator> list=new ArrayList<SupplyIterator>();
-////        list.add(iterator);
-////        list.add(iterator2);
-////        iterator.getMaxProductCanMake();
-////        ProductMaker productMaker=new ProductMaker(list);
-////        productMaker.getLatestStartTimePeriod();
-////        assertEquals(productMaker.hasAllKindSupplies(), true);
-////        assertEquals(productMaker.getLatestStartTimePeriod().getStartTimeMsec(), format.parse("2014–10–01 00:00:00").getTime());
-////        assertEquals(productMaker.getLatestStartTimePeriod().getSupply().getSupplyName(), "RAW_ROSE_005");
-////        assertEquals(productMaker.getEarliestEndTimePeriod().getEndTimeMsec(), format.parse("2014–10–31 00:00:00").getTime());
-////        assertEquals(productMaker.getEarliestEndTimePeriod().getSupply().getSupplyName(), "RAW_ROSE_005");
-////
-////
-////        assertEquals(productMaker.getMinProductNumber(), 1);
-////        productMaker.skipEarliestSupply(productMaker.getEarliestEndTimePeriod());
-////
-////        assertEquals(productMaker.hasAllKindSupplies(), true);
-////        assertEquals(productMaker.getMinProductNumber(), 47);
-//    }
+
 }

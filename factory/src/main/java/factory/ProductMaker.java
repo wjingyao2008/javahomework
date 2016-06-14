@@ -64,9 +64,9 @@ public class ProductMaker {
             return minProductNumber;
         }
 
-    private boolean isPeriodIntersected(SupplyIterator latestStart, SupplyIterator earlisetEnd)
+    private boolean isPeriodIntersected(SupplyIterator latestStart, SupplyIterator earliestEnd)
         {
-            return latestStart.getStartTimeMsec() < earlisetEnd.getEndTimeMsec();
+            return latestStart.getStartTimeMsec() < earliestEnd.getEndTimeMsec();
         }
 
 
