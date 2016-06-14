@@ -5,9 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-/**
- * Created by y28yang on 6/14/2016.
- */
+
 public class SupplyFactory {
     private Map<String, Supply> supplyMap = new HashMap<String, Supply>();
 
@@ -28,7 +26,7 @@ public class SupplyFactory {
 
     public void sortAllSupplyWithStartTime(){
         for(Supply supply:supplyMap.values()){
-            supply.sortAsStartTime();
+            supply.sortPeriodsByStartTime();
         }
     }
 

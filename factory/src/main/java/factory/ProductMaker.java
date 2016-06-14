@@ -2,9 +2,7 @@ package factory;
 
 import java.util.List;
 
-/**
- * Created by y28yang on 6/14/2016.
- */
+
 public class ProductMaker {
 
     private List<SupplyIterator> materials;
@@ -20,6 +18,7 @@ public class ProductMaker {
             while (hasAllKindSupplies()) {
                 tryToMakeProduct(productSupply);
             }
+            productSupply.sortPeriodsByStartTime();
             return productSupply;
         }
 
