@@ -47,6 +47,7 @@ public class SupplyFactoryTest extends TestCase {
         assertEquals(format.parse(expectStartTime), productSupplyPeriod.getStartTime());
         assertEquals(format.parse(expectEndTime), productSupplyPeriod.getEndTime());
         assertEquals(expectProductNum, productSupplyPeriod.providedNum());
+
     }
 
 
