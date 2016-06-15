@@ -3,6 +3,7 @@ package factory;
 import junit.framework.TestCase;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 
@@ -33,15 +34,22 @@ public class SupplyFactoryTest extends TestCase {
         assertEquals("98100201", productSupply.getSupplyName());
         assertEquals(2, productSupply.getList().size());
 
-        assertEquals(format.parse("2014–10–01 00:00:00"), productSupply.getList().get(0).getStartTime());
-        assertEquals(format.parse("2014–10–31 00:00:00"), productSupply.getList().get(0).getEndTime());
-        assertEquals(1, productSupply.getList().get(0).getMaterialNumber());
+        assertSupplyPeriod(productSupply.getList().get(0), "2014–10–01 00:00:00", "2014–10–31 00:00:00", 1);
+        assertSupplyPeriod(productSupply.getList().get(1), "2015–01–01 00:00:00", "2015–01–15 00:00:00", 47);
 
-        assertEquals(format.parse("2015–01–01 00:00:00"), productSupply.getList().get(1).getStartTime());
-        assertEquals(format.parse("2015–01–15 00:00:00"), productSupply.getList().get(1).getEndTime());
-        assertEquals(47, productSupply.getList().get(1).getMaterialNumber());
 
     }
+
+    private void assertSupplyPeriod(SupplyPeriod productSupplyPeriod,
+                                    String expectStartTime,
+                                    String expectEndTime,
+                                    int expectProductNum) throws ParseException {
+        assertEquals(format.parse(expectStartTime), productSupplyPeriod.getStartTime());
+        assertEquals(format.parse(expectEndTime), productSupplyPeriod.getEndTime());
+        assertEquals(expectProductNum, productSupplyPeriod.providedNum());
+    }
+
+
 
     public void testForProduct_98102601() throws Exception {
         Product product = new Product("98102601");
@@ -54,9 +62,7 @@ public class SupplyFactoryTest extends TestCase {
         assertEquals("98102601", productSupply.getSupplyName());
         assertEquals(1, productSupply.getList().size());
 
-        assertEquals(format.parse("2014–10–01 00:00:00"), productSupply.getList().get(0).getStartTime());
-        assertEquals(format.parse("2014–10–31 00:00:00"), productSupply.getList().get(0).getEndTime());
-        assertEquals(1, productSupply.getList().get(0).getMaterialNumber());
+        assertSupplyPeriod(productSupply.getList().get(0), "2014–10–01 00:00:00", "2014–10–31 00:00:00",1);
 
 
     }

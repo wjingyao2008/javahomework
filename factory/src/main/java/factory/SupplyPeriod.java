@@ -39,7 +39,7 @@ public class SupplyPeriod implements Comparable<SupplyPeriod> {
         return endTime;
     }
 
-    public int getMaterialNumber() {
+    public int providedNum() {
         return materialNumber;
     }
 
