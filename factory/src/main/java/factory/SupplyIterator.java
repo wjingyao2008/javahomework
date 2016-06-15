@@ -16,7 +16,8 @@ public class SupplyIterator {
 
     public int getMaxProductCanMake() {
         int requiredNum = requiredMaterial.getRequireNumber();
-        return getCurrentPeriod().getMaterialNumber() / requiredNum;
+        int providedNum = getCurrentPeriod().getMaterialNumber();
+        return providedNum / requiredNum;
     }
 
     public SupplyPeriod getCurrentPeriod() {
