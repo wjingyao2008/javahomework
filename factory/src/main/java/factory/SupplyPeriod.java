@@ -22,6 +22,7 @@ public class SupplyPeriod implements Comparable<SupplyPeriod> {
         this.endTime = endTime;
         this.materialNumber = materialNumber;
     }
+
     public long getStartTimeMsec() {
         return startTime.getTime();
     }
@@ -30,12 +31,11 @@ public class SupplyPeriod implements Comparable<SupplyPeriod> {
         return endTime.getTime();
     }
 
-    public Date getStartTime()
-        {
-            return startTime;
-        }
+    public Date getStartTime() {
+        return startTime;
+    }
 
-    public Date getEndTime(){
+    public Date getEndTime() {
         return endTime;
     }
 
@@ -43,8 +43,7 @@ public class SupplyPeriod implements Comparable<SupplyPeriod> {
         return materialNumber;
     }
 
-    public int compareTo(SupplyPeriod o)
-        {
-            return startTime.compareTo(o.getStartTime());
-        }
+    public int compareTo(SupplyPeriod o) {
+        return startTime.compareTo(o.getStartTime());
+    }
 }

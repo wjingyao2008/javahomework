@@ -7,7 +7,7 @@ import java.util.List;
 public class Supply {
 
     private String supplyName;
-    private List<SupplyPeriod> list=new ArrayList<SupplyPeriod>();
+    private List<SupplyPeriod> list = new ArrayList<SupplyPeriod>();
 
 
     public Supply(String supplyName) {
@@ -19,15 +19,15 @@ public class Supply {
         return supplyName;
     }
 
-    public void addNewSupplyPeriod(SupplyPeriod supplyPeriod){
+    public void addNewSupplyPeriod(SupplyPeriod supplyPeriod) {
         list.add(supplyPeriod);
     }
 
-    public List<SupplyPeriod> getList(){
+    public List<SupplyPeriod> getList() {
         return list;
     }
 
-    public void sortPeriodsByStartTime(){
+    public void sortPeriodsByStartTime() {
         Collections.sort(list);
     }
 }

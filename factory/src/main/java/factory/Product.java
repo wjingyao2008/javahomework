@@ -8,25 +8,22 @@ public class Product {
     private String id;
     private List<Material> materials = new ArrayList<Material>();
 
-    public Product(String id)
-        {
-            this.id = id;
-        }
+    public Product(String id) {
+        this.id = id;
+    }
 
 
-    public String getId()
-        {
-            return id;
-        }
+    public String getId() {
+        return id;
+    }
 
-    public void addNeededMaterial(Material material)
-        {
-            this.materials.add(material);
-        }
+    public void addNeededMaterial(Material material) {
+        this.materials.add(material);
+    }
 
-     public List<Material> getRequiredMaterials(){
-         return materials;
-     }
+    public List<Material> getRequiredMaterials() {
+        return materials;
+    }
 
 
 }

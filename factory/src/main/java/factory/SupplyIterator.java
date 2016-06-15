@@ -4,37 +4,38 @@ package factory;
 public class SupplyIterator {
 
     private Supply supply;
-    private int periodIndex=0;
+    private int periodIndex = 0;
     private Material requiredMaterial;
-    public SupplyIterator(Supply supply, Material material){
+
+    public SupplyIterator(Supply supply, Material material) {
 
         this.supply = supply;
-        requiredMaterial=material;
+        requiredMaterial = material;
     }
 
 
-    public int getMaxProductCanMake(){
-        int requiredNum=requiredMaterial.getRequireNumber();
-        return getCurrentPeriod().getMaterialNumber()/requiredNum;
+    public int getMaxProductCanMake() {
+        int requiredNum = requiredMaterial.getRequireNumber();
+        return getCurrentPeriod().getMaterialNumber() / requiredNum;
     }
 
-    public SupplyPeriod getCurrentPeriod(){
+    public SupplyPeriod getCurrentPeriod() {
         return supply.getList().get(periodIndex);
     }
 
-    public long getStartTimeMsec(){
+    public long getStartTimeMsec() {
         return getCurrentPeriod().getStartTimeMsec();
     }
 
-    public long getEndTimeMsec(){
+    public long getEndTimeMsec() {
         return getCurrentPeriod().getEndTimeMsec();
     }
 
-    public void nextPeriod(){
+    public void nextPeriod() {
         periodIndex++;
     }
 
-    public boolean hasNext(){
-        return periodIndex<supply.getList().size();
+    public boolean hasNext() {
+        return periodIndex < supply.getList().size();
     }
 }
