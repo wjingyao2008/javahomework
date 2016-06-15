@@ -74,11 +74,11 @@ public class ProductMaker {
     private void createSupplyPeriod(SupplyIterator latestStartPeriod, SupplyIterator earliestEndPeriod, Supply productSupply) {
         long startTime = latestStartPeriod.getStartTimeMsec();
         long endTime = earliestEndPeriod.getEndTimeMsec();
-        int produceNumber = getMinProductNumber();
+        int produceNumber = getMaxProductNumber();
         productSupply.addNewSupplyPeriod(new SupplyPeriod(startTime, endTime, produceNumber));
     }
 
-    private int getMinProductNumber() {
+    private int getMaxProductNumber() {
         int minProductNumber = Integer.MAX_VALUE;
         for (SupplyIterator supplyIterator : materials) {
             int productNumber = supplyIterator.getMaxProductCanMake();
