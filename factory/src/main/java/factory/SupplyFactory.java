@@ -55,6 +55,7 @@ public class SupplyFactory {
             Supply materialSupply = this.getSupplyByName(material.getName());
             materialSupplies.add(new SupplyIterator(materialSupply, material));
         }
+
         return materialSupplies;
     }
 }

@@ -5,6 +5,8 @@ import junit.framework.TestCase;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Collections;
 
 
 public class SupplyFactoryTest extends TestCase {
@@ -66,6 +68,13 @@ public class SupplyFactoryTest extends TestCase {
         assertSupplyPeriod(productSupply.getList().get(0), "2014–10–01 00:00:00", "2014–10–31 00:00:00",1);
 
 
+    }
+
+
+    public void testSort() throws Exception {
+        String[] words={"1","a","d","5","A","B"};
+        Arrays.sort(words,(first, second)->first.compareTo(second));
+        System.out.println(Arrays.toString(words));
     }
 
 

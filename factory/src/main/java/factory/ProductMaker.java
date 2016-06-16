@@ -1,14 +1,17 @@
 package factory;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 
 public class ProductMaker {
 
-    private List<SupplyIterator> materials;
+    private Stream<SupplyIterator> materials;
 
     public ProductMaker(List<SupplyIterator> materialSupplies) {
-        materials = materialSupplies;
+        materials = materialSupplies.stream();
     }
 
     public Supply createProductSupply(Product product) {
@@ -21,11 +24,7 @@ public class ProductMaker {
     }
 
     private boolean hasAllKindSupplies() {
-        boolean hasSupply = true;
-        for (SupplyIterator supplyIterator : materials) {
-            hasSupply = hasSupply && (supplyIterator.hasNext());
-        }
-        return hasSupply;
+        return materials.allMatch(i->i.hasNext());
     }
 
     private void tryToMakeProduct(Supply productSupply) {
@@ -40,30 +39,12 @@ public class ProductMaker {
     }
 
     private SupplyIterator getLatestStartTimePeriod() {
-        long latestStartTime = Long.MIN_VALUE;
-        SupplyIterator period = null;
-        for (SupplyIterator supplyIterator : materials) {
-            long startTime = supplyIterator.getCurrentPeriod().getStartTimeMsec();
-            if (startTime > latestStartTime) {
-                latestStartTime = startTime;
-                period = supplyIterator;
-            }
-        }
-        return period;
+        return materials.max(Comparator.comparingLong(SupplyIterator::getStartTimeMsec)).get();
     }
 
 
     private SupplyIterator getEarliestEndTimePeriod() {
-        long earliestEndTime = Long.MAX_VALUE;
-        SupplyIterator period = null;
-        for (SupplyIterator supplyIterator : materials) {
-            long endTime = supplyIterator.getCurrentPeriod().getEndTimeMsec();
-            if (endTime < earliestEndTime) {
-                earliestEndTime = endTime;
-                period = supplyIterator;
-            }
-        }
-        return period;
+        return materials.min(Comparator.comparingLong(SupplyIterator::getEndTimeMsec)).get();
     }
 
     private boolean isPeriodIntersected(SupplyIterator latestStart, SupplyIterator earliestEnd) {
@@ -74,19 +55,12 @@ public class ProductMaker {
     private void createSupplyPeriod(SupplyIterator latestStartPeriod, SupplyIterator earliestEndPeriod, Supply productSupply) {
         long startTime = latestStartPeriod.getStartTimeMsec();
         long endTime = earliestEndPeriod.getEndTimeMsec();
-        int produceNumber = getMaxProductNumber();
+        int produceNumber = getMinProductNumber();
         productSupply.addNewSupplyPeriod(new SupplyPeriod(startTime, endTime, produceNumber));
     }
 
-    private int getMaxProductNumber() {
-        int minProductNumber = Integer.MAX_VALUE;
-        for (SupplyIterator supplyIterator : materials) {
-            int productNumber = supplyIterator.getMaxProductCanMake();
-            if (minProductNumber > productNumber) {
-                minProductNumber = productNumber;
-            }
-        }
-        return minProductNumber;
+    private int getMinProductNumber() {
+        return materials.min(Comparator.comparing(SupplyIterator::getMaxProductCanMake)).get().getMaxProductCanMake();
     }
 
 
