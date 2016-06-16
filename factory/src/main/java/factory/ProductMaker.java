@@ -1,17 +1,15 @@
 package factory;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Stream;
 
 
 public class ProductMaker {
 
-    private Stream<SupplyIterator> materials;
+    private List<SupplyIterator> materials;
 
     public ProductMaker(List<SupplyIterator> materialSupplies) {
-        materials = materialSupplies.stream();
+        materials = materialSupplies;
     }
 
     public Supply createProductSupply(Product product) {
@@ -24,7 +22,7 @@ public class ProductMaker {
     }
 
     private boolean hasAllKindSupplies() {
-        return materials.allMatch(i->i.hasNext());
+        return materials.stream().allMatch(i->i.hasNext());
     }
 
     private void tryToMakeProduct(Supply productSupply) {
@@ -39,12 +37,12 @@ public class ProductMaker {
     }
 
     private SupplyIterator getLatestStartTimePeriod() {
-        return materials.max(Comparator.comparingLong(SupplyIterator::getStartTimeMsec)).get();
+        return materials.stream().max(Comparator.comparingLong(i->i.getStartTimeMsec())).get();
     }
 
 
     private SupplyIterator getEarliestEndTimePeriod() {
-        return materials.min(Comparator.comparingLong(SupplyIterator::getEndTimeMsec)).get();
+        return materials.stream().min(Comparator.comparingLong(i->i.getEndTimeMsec())).get();
     }
 
     private boolean isPeriodIntersected(SupplyIterator latestStart, SupplyIterator earliestEnd) {
@@ -60,7 +58,7 @@ public class ProductMaker {
     }
 
     private int getMinProductNumber() {
-        return materials.min(Comparator.comparing(SupplyIterator::getMaxProductCanMake)).get().getMaxProductCanMake();
+        return materials.stream().min(Comparator.comparing(i->i.getMaxProductCanMake())).get().getMaxProductCanMake();
     }
 
 

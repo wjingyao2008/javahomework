@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.stream.Stream;
 
 
 public class SupplyFactoryTest extends TestCase {
@@ -75,6 +76,11 @@ public class SupplyFactoryTest extends TestCase {
         String[] words={"1","a","d","5","A","B"};
         Arrays.sort(words,(first, second)->first.compareTo(second));
         System.out.println(Arrays.toString(words));
+
+        String[] isOK={"1","1","1","1","1"};
+        Stream<String> stream = Arrays.stream(isOK);
+        System.out.println(stream.allMatch(i->i=="1"));
+
     }
 
 
